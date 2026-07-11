@@ -1,5 +1,6 @@
+import sys
 import pygame
-from logger import log_state
+from logger import log_state, log_event
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
 from asteroid import Asteroid
@@ -37,6 +38,12 @@ def main():
 
         # updates all items in updatable group
         updatable.update(dt)
+
+        for item in asteroids:
+            if item.collides_with(player) == True:
+                log_event("player_hit")
+                print("Game over!")
+                sys.exit()
         
         # used to draw each item in the drawable group
         for item in drawable:

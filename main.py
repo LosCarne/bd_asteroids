@@ -42,11 +42,21 @@ def main():
         # updates all items in updatable group
         updatable.update(dt)
 
+        # iterate over asteroids and checks if collision with player.
         for item in asteroids:
             if item.collides_with(player) == True:
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit()
+        
+        # iterates over asteroids and checks if collision with shots.
+        for item in asteroids:
+            for shot in shots:
+                if item.collides_with(shot) == True:
+                    log_event("asteroid_shot")
+                    shot.kill()
+                    item.split()
+
         
         # used to draw each item in the drawable group
         for item in drawable:

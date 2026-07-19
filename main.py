@@ -1,4 +1,4 @@
-import sys, pygame
+import sys, pygame, os
 from logger import log_state, log_event
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
@@ -6,9 +6,11 @@ from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
 
+os.environ["SDL_AUDIODRIVER"] = 'pulseaudio'
 
 def main():
     pygame.init()
+    pygame.mixer.init()
     
     clock = pygame.time.Clock()
     dt = 0.0

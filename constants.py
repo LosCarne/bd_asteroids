@@ -16,3 +16,8 @@ SHOT_RADIUS = 5
 PLAYER_SHOOT_SPEED = 500
 
 PLAYER_SHOOT_COOLDOWN_SECONDS = 0.3
+
+ASTEROID_BASE_POINTS = [
+        (1.0, 0.0), (0.7, 0.7), (0.0, 1.0), (-0.7, 0.7),
+        (-1.0, 0.0), (-0.7, -0.7), (0.0, -1.0), (0.7, -0.7)
+        ]

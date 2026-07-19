@@ -1,7 +1,8 @@
-import pygame
+import pygame, time, wave
 from circleshape import CircleShape
 from constants import*
 from shot import Shot
+
 
 class Player(CircleShape):
     def __init__(self, x, y):
@@ -54,12 +55,19 @@ class Player(CircleShape):
         self.position += rotated_with_speed_vector
 
 
+    def sound_clip(self, clip):
+        blaster = pygame.mixer.Sound(clip)
+        blaster.set_volume(0.5)
+        blaster.play()
+
+
     def shoot(self):
 
         if self.cooldown < 0:
            shot = Shot(self.position.x, self.position.y, SHOT_RADIUS)
            shot.velocity = (pygame.Vector2(0,1).rotate(self.rotation)) * PLAYER_SHOOT_SPEED
            self.cooldown = PLAYER_SHOOT_COOLDOWN_SECONDS
+           self.sound_clip("SoundShootDull.wav")
 
 
 
